@@ -2,11 +2,14 @@ package com.revature.groupproject.ui;
 
 import com.revature.groupproject.models.Courses;
 import com.revature.groupproject.services.CoursesServices;
-import jdk.internal.jrtfs.JrtPath;
+
 
 import java.util.Scanner;
 
 public class RegisterMenu implements IMenu{
+    public RegisterMenu() {
+    }
+
     @Override
     public void start() {
         Scanner scanner=new Scanner(System.in);

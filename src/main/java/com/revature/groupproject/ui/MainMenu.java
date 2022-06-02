@@ -36,7 +36,7 @@ public class MainMenu implements IMenu {
                 viewCourses();
                 break;
             case "2":
-                RegisterMenu.start();
+           new RegisterMenu().start();
             case "x":
                 break;
             default:
@@ -47,7 +47,7 @@ public class MainMenu implements IMenu {
     }
     private void viewCourses(){
         Scanner scanner=new Scanner(System.in);
-        List<Courses> courses= CoursesServices.getAllCourses();
+        List<Courses> courses= null;//CoursesServices.getAllCourses();
 
         while(true){
             System.out.println("Please select a Course");
@@ -60,4 +60,4 @@ public class MainMenu implements IMenu {
 
     }
 
-}
+}}
