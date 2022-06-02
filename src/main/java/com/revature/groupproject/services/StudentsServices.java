@@ -15,19 +15,18 @@ public class StudentsServices {
         this.studentsDAO = studentsDAO;
     }
 
-    public boolean login(String username, String password){
-
+    public Students login(String username, String password) throws InvalidStudentsException{
 
         List<Students> students = studentsDAO.getAll();
 
-
         for(Students s : students){
 
-            if(s.getUsername() .equals(username) && s.getPassword() .equals(password))
-            { return true;}
+            if(s.getUsername() .equals(username) && s.getPassword() .equals(password)) {
+                return s;
+            }
 
         }
-        return false;
+        return null;
     }
 
     private Students isValidCredentials(Students students){
