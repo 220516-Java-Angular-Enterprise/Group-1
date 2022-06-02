@@ -4,11 +4,18 @@ public class Courses {
     private String id;
     private String coursename;
     private String description;
-    private String studentamount;
+    private int studentamount;
 
    public Courses() {
 
    }
+
+    public Courses(String id, String coursename, String description, int studentamount) {
+        this.id = id;
+        this.coursename = coursename;
+        this.description = description;
+        this.studentamount = studentamount;
+    }
 
     public String getId() {
         return id;
@@ -34,11 +41,11 @@ public class Courses {
         this.description = description;
     }
 
-    public String getStudentamount() {
+    public int getStudentamount() {
         return studentamount;
     }
 
-    public void setStudentamount(String studentamount) {
+    public void setStudentamount(int studentamount) {
         this.studentamount = studentamount;
     }
 
