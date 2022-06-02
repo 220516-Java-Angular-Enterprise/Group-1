@@ -11,17 +11,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CoursesDAO implements CRUDDao<Students>{
+public class CoursesDAO implements CRUDDao<Courses>{
     Connection con = DatabaseConnection.getCon();
 
 
     @Override
-    public void save(Students obj) {
+    public void save(Courses obj) {
 
     }
 
     @Override
-    public void update(Students obj) {
+    public void update(Courses obj) {
 
     }
 
@@ -49,7 +49,7 @@ public class CoursesDAO implements CRUDDao<Students>{
     }
 
     @Override
-    public List getById(String id) {
+    public Courses getById(String id) {
         return null;
     }
 }

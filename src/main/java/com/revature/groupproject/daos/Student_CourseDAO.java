@@ -88,7 +88,7 @@ public class Student_CourseDAO implements CRUDDao<Student_Course>{
     }
 
     @Override
-    public List getById(String id) {
+    public Student_Course getById(String id) {
         return null;
     }
 }
