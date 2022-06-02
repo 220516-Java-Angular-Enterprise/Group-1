@@ -1,13 +1,12 @@
 package com.revature.groupproject.services;
 
-import com.revature.groupproject.daos.Student_CoursesDAO;
-import com.revature.groupproject.models.student_course;
+import com.revature.groupproject.daos.Student_CourseDAO;
 
-public class Students_CoursesServices {
+public class Student_CourseServices {
 
-    private final Student_CoursesDAO student_coursesDAO;
+    private final Student_CourseDAO student_coursesDAO;
 
-    public students_coursesServices(Student_CoursesDAO student_coursesDAO){
+    public Student_CourseServices(Student_CourseDAO student_coursesDAO){
         this.student_coursesDAO = student_coursesDAO;
     }
 }
