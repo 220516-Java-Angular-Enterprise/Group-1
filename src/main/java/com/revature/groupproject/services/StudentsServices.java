@@ -17,16 +17,14 @@ public class StudentsServices {
 
     public boolean login(String username, String password){
 
-<<<<<<< HEAD
-<<<<<<< HEAD:src/main/java/com/revature/groupproject/Services/StudentsServices.java
+
         List<Students> students = StudentsDAO.getAll();
-=======
+
         List<Students> students = studentsDAO.getAll();
->>>>>>> 314973a25aa1c932b0b1a80bd8281804709fe9f1:src/main/java/com/revature/groupproject/services/StudentsServices.java
-=======
+
         List<Students> students = new ArrayList<>();
         students = studentsDAO .getAll();
->>>>>>> 727a84823c8aeae0ddb3f552faf7e47869189fb9
+
 
         for(Students s : students){
 
