@@ -1,4 +1,7 @@
 package com.revature.groupproject.util;
 
-public class MainDriver {
-}
+import com.revature.groupproject.ui.StartMenu;
+
+public class MainDriver { public static void main(String[] args){
+    new StartMenu().
+}}
