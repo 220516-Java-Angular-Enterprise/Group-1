@@ -1,4 +1,4 @@
-package com.revature.groupproject.Services;
+package com.revature.groupproject.services;
 
 import com.revature.groupproject.models.Students;
 import com.revature.groupproject.daos.StudentsDAO;
@@ -18,12 +18,7 @@ public class StudentsServices {
     public boolean login(String username, String password){
 
 
-        List<Students> students = StudentsDAO.getAll();
-
         List<Students> students = studentsDAO.getAll();
-
-        List<Students> students = new ArrayList<>();
-        students = studentsDAO .getAll();
 
 
         for(Students s : students){
