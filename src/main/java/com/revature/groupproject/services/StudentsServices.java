@@ -1,9 +1,10 @@
-package com.revature.groupproject.services;
+package com.revature.groupproject.Services;
 
 import com.revature.groupproject.models.Students;
 import com.revature.groupproject.daos.StudentsDAO;
 import com.revature.groupproject.util.custom_exception.InvalidStudentsException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentsServices {
@@ -16,7 +17,8 @@ public class StudentsServices {
 
     public boolean login(String username, String password){
 
-        List<Students> students = studentsDAO.getAll();
+        List<Students> students = new ArrayList<>();
+        students = studentsDAO .getAll();
 
         for(Students s : students){
 
@@ -37,4 +39,3 @@ public class StudentsServices {
         return students;
     }
 }
-
