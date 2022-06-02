@@ -1,15 +1,27 @@
 package com.revature.groupproject.daos;
 
+import com.revature.groupproject.models.Courses;
+import com.revature.groupproject.models.Students;
+import com.revature.groupproject.util.database.DatabaseConnection;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class CoursesDAO implements CRUDDao{
+public class CoursesDAO implements CRUDDao<Students>{
+    Connection con = DatabaseConnection.getCon();
+
+
     @Override
-    public void save(Object obj) {
+    public void save(Students obj) {
 
     }
 
     @Override
-    public void update(Object obj) {
+    public void update(Students obj) {
 
     }
 
@@ -20,7 +32,20 @@ public class CoursesDAO implements CRUDDao{
 
     @Override
     public List getAll() {
-        return null;
+        List<Courses> coursesList = new ArrayList<>();
+        try{
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM courses");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Courses courses = new Courses(rs.getString("id"), rs.getString("name"), rs.getString("description"), rs.getInt("studentamount"));
+                coursesList.add(courses);
+            }
+        }catch (SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        return coursesList;
     }
 
     @Override
