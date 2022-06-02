@@ -47,7 +47,22 @@ public class StudentsDAO implements CRUDDao<Students> {
     }
 
     @Override
-    public List<Students> getById(String id) {
-        return null;
+    public Students getById(String id) {
+        Students students = new Students();
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM students");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                students.setId(rs.getString("id"));
+                students.setUsername(rs.getString("username"));
+                students.setPassword(rs.getString("password"));
+                students.setName(rs.getString("name"));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        return students;
     }
 }

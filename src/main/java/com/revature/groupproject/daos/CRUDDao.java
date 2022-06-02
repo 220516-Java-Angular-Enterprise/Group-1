@@ -9,6 +9,6 @@ public interface CRUDDao<T> {
 
     List<T> getAll();
 
-    List<T> getById(String id);
+    T getById(String id);
 
 }
