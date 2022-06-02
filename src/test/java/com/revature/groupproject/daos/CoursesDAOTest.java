@@ -14,7 +14,7 @@ public class CoursesDAOTest {
         //Act
         List<Courses> coursesList = coursesDAO.getAll();
         //Arrange
-        Courses courses = coursesList.get(3);
+        Courses courses = coursesList.get(2);
         //Assert
         assertEquals("HED404", courses.getCoursename());
     }
