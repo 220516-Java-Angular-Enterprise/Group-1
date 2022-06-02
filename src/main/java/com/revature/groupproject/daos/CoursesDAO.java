@@ -31,7 +31,7 @@ public class CoursesDAO implements CRUDDao<Courses>{
     }
 
     @Override
-    public List getAll() {
+    public List<Courses> getAll() {
         List<Courses> coursesList = new ArrayList<>();
         try{
             PreparedStatement ps = con.prepareStatement("SELECT * FROM courses");
