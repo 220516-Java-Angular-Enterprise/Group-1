@@ -3,6 +3,7 @@ package com.revature.groupproject.ui;
 import com.revature.groupproject.models.Courses;
 import com.revature.groupproject.models.Students;
 import com.revature.groupproject.services.CoursesServices;
+import com.revature.groupproject.services.StudentsServices;
 
 import java.util.List;
 import java.util.Scanner;
@@ -11,11 +12,11 @@ public class MainMenu implements IMenu {
 
     private final Students students;
 
-    private final StudentsService studentsService;
+    private final StudentsServices studentsService;
 
-    private final CoursesService coursesService;
+    private final CoursesServices coursesService;
 
-    public MainMenu(Students students, StudentsService studentsService,CoursesService coursesService){
+    public MainMenu(Students students, StudentsServices studentsService,CoursesServices coursesService){
         this.students=students;
         this.studentsService=studentsService;
         this.coursesService=coursesService;

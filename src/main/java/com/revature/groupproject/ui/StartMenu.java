@@ -1,7 +1,14 @@
 package com.revature.groupproject.ui;
 
 import java.util.Scanner;
-import com.revature.groupproject.Services.StudentsServices;
+
+import com.revature.groupproject.daos.CoursesDAO;
+import com.revature.groupproject.daos.StudentsDAO;
+import com.revature.groupproject.models.Students;
+import com.revature.groupproject.services.StudentsServices;
+import com.revature.groupproject.services.CoursesServices;
+import com.revature.groupproject.util.custom_exception.InvalidStudentsException;
+
 public class StartMenu implements IMenu{
 
     private final StudentsServices studentsServices;
@@ -45,6 +52,7 @@ public class StartMenu implements IMenu{
         String password="";
         String name="";
 
+
         Scanner scan = new Scanner(System.in);
 
         while(true){
@@ -56,9 +64,27 @@ public class StartMenu implements IMenu{
             password=scan.nextLine();
 
             try{
-                students = studentsServices.login(username,password);
-                if MainMenu(students, new StudentsServices())
+                boolean students = studentsServices.login(username, password);
+                Students temp=new Students();
+                new MainMenu(temp, new StudentsServices(new StudentsDAO()),new CoursesServices(new CoursesDAO())).start();
+                break;
+            }catch (InvalidStudentsException e){
+                System.out.println(e.getMessage());
             }
         }
-    }
-}
+    while(true){
+        System.out.println("\nPassword: ");
+        password=scan.nextLine();
+
+        try{ if StudentsServices.isValidCredentials){
+    System.out.println("Valid Password");
+    System.out.println("Confirm password: ");
+    String confirm = scan.nextLine();
+    if(password.equals(confirm)) break;
+    else System.out.println("Password does not match");
+        }
+
+    }catch (InvalidStudentsException e){
+            System.out.println(e.getMessage());
+        }
+}}}
