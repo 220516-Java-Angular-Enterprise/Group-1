@@ -16,7 +16,7 @@ public class StudentsServices {
 
     public boolean login(String username, String password){
 
-        List<Students> students = StudentsDAO.getALL();
+        List<Students> students = StudentsDAO.getAll();
 
         for(Students s : students){
 

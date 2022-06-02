@@ -56,11 +56,8 @@ public class MainMenu implements IMenu {
                 System.out.println("["+(i+1)+"]"+courses.get(i).getCoursename());
             }
             System.out.println("\nEnter: ");
-            int input= scanner.nextInt()-1;
-             if(input>=0&& input<courses.size()){
-                 Courses selectedCourse =courses.get(input);
-                 List<Courses> courses=CoursesService.getCourseBy
-             }
+
+
     }
 
 }

@@ -72,19 +72,6 @@ public class StartMenu implements IMenu{
                 System.out.println(e.getMessage());
             }
         }
-    while(true){
-        System.out.println("\nPassword: ");
-        password=scan.nextLine();
 
-        try{ if StudentsServices.isValidCredentials){
-    System.out.println("Valid Password");
-    System.out.println("Confirm password: ");
-    String confirm = scan.nextLine();
-    if(password.equals(confirm)) break;
-    else System.out.println("Password does not match");
-        }
 
-    }catch (InvalidStudentsException e){
-            System.out.println(e.getMessage());
-        }
-}}}
+}}
