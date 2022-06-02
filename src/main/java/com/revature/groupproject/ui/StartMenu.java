@@ -1,7 +1,7 @@
 package com.revature.groupproject.ui;
 
 import java.util.Scanner;
-
+import com.revature.groupproject.Services.StudentsServices;
 public class StartMenu implements IMenu{
 
     private final StudentsServices studentsServices;
@@ -56,7 +56,8 @@ public class StartMenu implements IMenu{
             password=scan.nextLine();
 
             try{
-                students= studentsServices.login(username,password);
+                students = studentsServices.login(username,password);
+                if MainMenu(students, new StudentsServices())
             }
         }
     }
