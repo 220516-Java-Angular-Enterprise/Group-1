@@ -45,6 +45,8 @@ public class StartMenu implements IMenu{
         System.out.println("Welcome to Imagination University");
         System.out.println("[1]Login");
         System.out.println("[x]Exit");
+        System.out.println("Enter: ");
+
     }
 
     private void login(){
