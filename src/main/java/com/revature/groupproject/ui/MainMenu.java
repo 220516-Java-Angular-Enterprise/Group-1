@@ -7,6 +7,8 @@ import com.revature.groupproject.models.Students;
 import com.revature.groupproject.services.CoursesServices;
 import com.revature.groupproject.services.Student_CourseServices;
 import com.revature.groupproject.services.StudentsServices;
+import com.revature.groupproject.util.custom_exception.InvalidCourseException;
+import com.revature.groupproject.util.custom_exception.InvalidStudentsException;
 
 import java.util.List;
 import java.util.Scanner;
@@ -58,16 +60,16 @@ public class MainMenu implements IMenu {
     private void viewCourses(){
         Scanner scanner=new Scanner(System.in);
         List<Courses> courses= null;//CoursesServices.getAllCourses();
-
-        while(true){
+try{
+        while(true) {
             System.out.println("Please select a Course");
 
-            for(int i=0;i<courses.size();i++){
-                System.out.println("["+(i+1)+"]"+courses.get(i).getCoursename());
+            for (int i = 0; i < courses.size(); i++) {
+                System.out.println("[" + (i + 1) + "]" + courses.get(i).getCoursename());
             }
             System.out.println("\nEnter: ");
-
-
-    }
+        }}
+catch (InvalidCourseException e)
+{ throw new RuntimeException("Invalid input.");}
 
 }}
