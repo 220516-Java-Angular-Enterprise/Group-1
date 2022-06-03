@@ -24,7 +24,7 @@ public class StudentsDAO implements CRUDDao<Students> {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM students");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Students students = new Students(rs.getString("id"), rs.getString("username"), rs.getString("password"), rs.getString("name"));
+                Students students = new Students(rs.getString("id"), rs.getString("name"), rs.getString("username"), rs.getString("password"));
                 studentsList.add(students);
             }
         } catch (SQLException e) {

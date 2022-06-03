@@ -20,13 +20,12 @@ public class StudentsServices {
         List<Students> students = studentsDAO.getAll();
 
         for(Students s : students){
-
-            if(s.getUsername() .equals(username) && s.getPassword() .equals(password)) {
+            if(s.getUsername().equals(username) && s.getPassword().equals(password)) {
                 return s;
             }
-
         }
-        return null;
+
+        throw new InvalidStudentsException("Incorrect Login Credentials");
     }
 
     private Students isValidCredentials(Students students){

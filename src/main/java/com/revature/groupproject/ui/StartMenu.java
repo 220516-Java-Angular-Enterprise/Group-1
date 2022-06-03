@@ -44,7 +44,7 @@ public class StartMenu implements IMenu{
     private void displayWelcomeMsg(){
         System.out.println("Welcome to Imagination University");
         System.out.println("[1]Login");
-        System.out.println("[x]Exit:");
+        System.out.println("[x]Exit");
     }
 
     private void login(){
@@ -64,9 +64,8 @@ public class StartMenu implements IMenu{
             password=scan.nextLine();
 
             try{
-                boolean students = studentsServices.login(username, password);
-                Students temp=new Students();
-                new MainMenu(temp, new StudentsServices(new StudentsDAO()),new CoursesServices(new CoursesDAO())).start();
+                Students students = studentsServices.login(username, password);
+                new MainMenu(students, new StudentsServices(new StudentsDAO()),new CoursesServices(new CoursesDAO())).start();
                 break;
             }catch (InvalidStudentsException e){
                 System.out.println(e.getMessage());
