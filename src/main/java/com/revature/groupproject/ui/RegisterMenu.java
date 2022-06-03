@@ -35,7 +35,6 @@ public class RegisterMenu implements IMenu{
                 switch(scanner.nextLine()){
                     case "1":
                         registerCourse();
-
                         break ;
                     case"x":
                         break exit;
@@ -60,9 +59,9 @@ public class RegisterMenu implements IMenu{
             String in = scan.nextLine();
             if (in.matches("\\d+")) {
                 int temp = Integer.valueOf(in)-1;
-                if (temp > 0 && temp < courses.size()) {
+                if (temp >= 0 && temp < courses.size()) {
                     Student_Course student_course = new Student_Course(students.getId(), courses.get(temp).getId());
-                    //student_courseServices method call here
+                    student_courseServices.register(student_course);
                     System.out.println("Registered for: " + courses.get(temp).getCoursename());
                     break exit;
                 }

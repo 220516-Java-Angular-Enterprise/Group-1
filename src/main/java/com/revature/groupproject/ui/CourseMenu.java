@@ -48,8 +48,8 @@ public class CourseMenu implements IMenu{
     private void dropCourse() {
         Scanner scan = new Scanner(System.in);
         exit:{
-    while (true) {
-        List<Student_Course> student_courses = student_courseServices.getAll();
+        while (true) {
+        List<Student_Course> student_courses = student_courseServices.getAllStudent_Course(students.getId());
         for (int i = 0; i < student_courses.size(); i++) {
             System.out.println("[" + (i + 1) + "]" + student_courses.get(i).toString());
         }
@@ -57,7 +57,7 @@ public class CourseMenu implements IMenu{
         String in = scan.nextLine();
         if (in.matches("\\d+")) {
             int temp = Integer.valueOf(in)-1;
-            if (temp > 0 && temp < student_courses.size()) {
+            if (temp >= 0 && temp < student_courses.size()) {
           Student_Course student_course= student_courses.get(temp);
           student_courseServices.deletestudentCourse(student_course);
                 //student_courseServices method call here
@@ -70,4 +70,6 @@ public class CourseMenu implements IMenu{
             System.out.println("Invalid Input");
         }
     }
-}}}
+    }
+    }
+}

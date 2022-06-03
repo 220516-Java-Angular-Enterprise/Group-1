@@ -42,7 +42,7 @@ public class MainMenu implements IMenu {
 
                 switch (scan.nextLine()) {
                     case "1":
-                        viewCourses();
+                        new CourseMenu(new CoursesServices(new CoursesDAO()), students, new Student_CourseServices(new Student_CourseDAO())).start();
                         break;
                     case "2":
                         new RegisterMenu(new CoursesServices(new CoursesDAO()), students, new Student_CourseServices(new Student_CourseDAO())).start();
