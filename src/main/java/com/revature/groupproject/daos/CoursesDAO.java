@@ -22,7 +22,16 @@ public class CoursesDAO implements CRUDDao<Courses>{
 
     @Override
     public void update(Courses obj) {
-
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE courses SET studentamount = ? WHERE id = ?");
+            ps.setInt(1, obj.getStudentamount());
+            ps.setString(2, obj.getId());
+            ps.executeUpdate();
+        } catch (SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
     }
 
     @Override
@@ -34,7 +43,7 @@ public class CoursesDAO implements CRUDDao<Courses>{
     public List<Courses> getAll() {
         List<Courses> coursesList = new ArrayList<>();
         try{
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM courses");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM courses ORDER BY id");
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 Courses courses = new Courses(rs.getString("id"), rs.getString("name"), rs.getString("description"), rs.getInt("studentamount"));

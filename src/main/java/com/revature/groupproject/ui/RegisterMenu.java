@@ -59,10 +59,22 @@ public class RegisterMenu implements IMenu{
             String in = scan.nextLine();
             if (in.matches("\\d+")) {
                 int temp = Integer.valueOf(in)-1;
-                if (temp >= 0 && temp < courses.size()) {
+                if (temp >= 0 && temp < courses.size() && courses.get(temp).getStudentamount() > 0) {
+
                     Student_Course student_course = new Student_Course(students.getId(), courses.get(temp).getId());
-                    student_courseServices.register(student_course);
-                    System.out.println("Registered for: " + courses.get(temp).getCoursename());
+                    if(student_courseServices.duplicateCourse(student_course)) {
+                        student_courseServices.register(student_course);
+
+                        //Code to update course student amount
+                        Courses c = courses.get(temp);
+                        c.setStudentamount(c.getStudentamount() - 1);
+                        coursesServices.updateCourse(c);
+                        //Code to update course student amount
+
+                        System.out.println("Registered for: " + courses.get(temp).getCoursename());
+                    }else {
+                        System.out.println("Can only register one time per a course.");
+                    }
                     break exit;
                 }
             } else if (in.equals("x")) {

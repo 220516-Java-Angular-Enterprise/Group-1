@@ -64,12 +64,13 @@ public class Student_CourseDAO implements CRUDDao<Student_Course>{
     public List getAll() {
         List<Student_Course> student_coursesList = new ArrayList<>();
         try {
-            PreparedStatement ps = con.prepareStatement("select sc.studentid, sc.courseid, s.name, c.name AS c_name, c.description, c.studentamount from studentcourse sc inner join students s on s.id = sc.studentid inner join courses c on c.id = sc.courseid");
+            PreparedStatement ps = con.prepareStatement("select sc.studentid, sc.courseid, s.name, c.id, c.name AS c_name, c.description, c.studentamount from studentcourse sc inner join students s on s.id = sc.studentid inner join courses c on c.id = sc.courseid");
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 Students students = new Students();
                 students.setName(rs.getString("name"));
                 Courses courses = new Courses();
+                courses.setId(rs.getString("id"));
                 courses.setCoursename(rs.getString("c_name"));
                 courses.setDescription(rs.getString("description"));
                 courses.setStudentamount(rs.getInt("studentamount"));

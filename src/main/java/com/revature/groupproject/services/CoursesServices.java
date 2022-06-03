@@ -15,10 +15,13 @@ public class CoursesServices {
     }
 
     public List<Courses> getAll(){
-        
         List<Courses> courseList = coursesDAO.getAll();
         courseList.isEmpty();
             return courseList;
+    }
+
+    public void updateCourse(Courses courses){
+        coursesDAO.update(courses);
     }
 
 }

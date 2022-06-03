@@ -1,5 +1,6 @@
 package com.revature.groupproject.ui;
 
+import com.revature.groupproject.models.Courses;
 import com.revature.groupproject.models.Student_Course;
 import com.revature.groupproject.models.Students;
 import com.revature.groupproject.services.CoursesServices;
@@ -58,9 +59,13 @@ public class CourseMenu implements IMenu{
         if (in.matches("\\d+")) {
             int temp = Integer.valueOf(in)-1;
             if (temp >= 0 && temp < student_courses.size()) {
-          Student_Course student_course= student_courses.get(temp);
-          student_courseServices.deletestudentCourse(student_course);
-                //student_courseServices method call here
+                Student_Course student_course= student_courses.get(temp);
+                //Code to update course student amount
+                Courses c = student_course.getCourses();
+                c.setStudentamount(c.getStudentamount() + 1);
+                coursesServices.updateCourse(c);
+                //Code to update course student amount
+                student_courseServices.deletestudentCourse(student_course);
                 System.out.println("Dropped Student course for: " + student_courses.get(temp).getCourses().getCoursename());
                 break exit;
             }

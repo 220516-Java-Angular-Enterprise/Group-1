@@ -45,11 +45,6 @@ public class Student_Course {
 
     @Override
     public String toString() {
-        return "Student_Course{" +
-                "studentID='" + studentID + '\'' +
-                ", courseID='" + courseID + '\'' +
-                ", students=" + students +
-                ", courses=" + courses +
-                '}';
+        return "Registered Course: " + courses.getCoursename() + ", " + courses.getDescription() + " | Name: " + students.getName();
     }
 }

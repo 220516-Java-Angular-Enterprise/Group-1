@@ -28,6 +28,16 @@ public class Student_CourseServices {
         return student_course;
     }
 
+    public boolean duplicateCourse(Student_Course st){
+        List<Student_Course> list = student_coursesDAO.getAll();
+        for (Student_Course sc:list) {
+            if (sc.getCourseID().equals(st.getCourseID()) && sc.getStudentID().equals(st.getStudentID())){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void deletestudentCourse(Student_Course student_course){
             String studentid = student_course.getStudentID();
             String courseid = student_course.getCourseID();
