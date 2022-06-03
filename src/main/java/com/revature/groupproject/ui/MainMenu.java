@@ -21,29 +21,36 @@ public class MainMenu implements IMenu {
         this.studentsService=studentsService;
         this.coursesService=coursesService;
     }
-    public void start(){
-        System.out.print("Welcome to the Main Menu"+students.getUsername());
-        Scanner scan = new Scanner(System.in);
+    public void start() {
+        exit:
+        {
+            while (true) {
+                
+                System.out.print("Welcome to the Main Menu" + StudentsServices);
+                Scanner scan = new Scanner(System.in);
 
-        System.out.println("[1]View All Courses");
-        System.out.println("[2] Register for Course");
-        System.out.println("[x] Sign out.");
+                System.out.println("[1]View All Courses");
+                System.out.println("[2] Register for Course");
+                System.out.println("[x] Sign out.");
 
-        System.out.println("\nEnter: ");
+                System.out.println("\nEnter: ");
 
-        switch(scan.nextLine()){
-            case "1":
-                viewCourses();
-                break;
-            case "2":
-           new RegisterMenu().start();
-            case "x":
-                break;
-            default:
-                System.out.println("\nInvalid input.");
-                break;
+                switch (scan.nextLine()) {
+                    case "1":
+                        viewCourses();
+                        break;
+                    case "2":
+                        new RegisterMenu().start();
+                        break;
+                    case "x":
+                        break exit;
+                    default:
+                        System.out.println("\nInvalid input.");
+                        break;
+                }
+
+            }
         }
-
     }
     private void viewCourses(){
         Scanner scanner=new Scanner(System.in);
