@@ -2,7 +2,9 @@ package com.revature.groupproject.ui;
 
 import com.revature.groupproject.models.Courses;
 import com.revature.groupproject.models.Student_Course;
+import com.revature.groupproject.models.Students;
 import com.revature.groupproject.services.CoursesServices;
+import com.revature.groupproject.services.Student_CourseServices;
 
 
 import java.util.List;
@@ -10,8 +12,12 @@ import java.util.Scanner;
 
 public class RegisterMenu implements IMenu{
     private final CoursesServices coursesServices;
-    public RegisterMenu(CoursesServices coursesServices) {
+    private final Students students;
+    private final Student_CourseServices student_courseServices;
+    public RegisterMenu(CoursesServices coursesServices, Students students, Student_CourseServices student_courseServices) {
         this.coursesServices=coursesServices;
+        this.students = students;
+        this.student_courseServices = student_courseServices;
     }
 
     @Override
@@ -44,12 +50,27 @@ public class RegisterMenu implements IMenu{
 
     private void registerCourse() {
         Scanner scan = new Scanner(System.in);
-        List<Courses>courses=coursesServices.getAll();
-         for(int i=0;i<courses.size();i++) {
-           System.out.println("["+(i+1)+"]"+courses.get(i).toString());
+        exit:
+        while (true) {
+            List<Courses> courses = coursesServices.getAll();
+            for (int i = 0; i < courses.size(); i++) {
+                System.out.println("[" + (i + 1) + "]" + courses.get(i).toString());
+            }
+            System.out.println("[x]Exit");
+            String in = scan.nextLine();
+            if (in.matches("\\d+")) {
+                int temp = Integer.valueOf(in)-1;
+                if (temp > 0 && temp < courses.size()) {
+                    Student_Course student_course = new Student_Course(students.getId(), courses.get(temp).getId());
+                    //student_courseServices method call here
+                    System.out.println("Registered for: " + courses.get(temp).getCoursename());
+                    break exit;
+                }
+            } else if (in.equals("x")) {
+                break exit;
+            } else {
+                System.out.println("Invalid Input");
+            }
         }
-        System.out.println("[x]Exit");
-    }
-
-
+        }
 }

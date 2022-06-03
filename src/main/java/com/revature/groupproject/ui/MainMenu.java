@@ -1,9 +1,11 @@
 package com.revature.groupproject.ui;
 
 import com.revature.groupproject.daos.CoursesDAO;
+import com.revature.groupproject.daos.Student_CourseDAO;
 import com.revature.groupproject.models.Courses;
 import com.revature.groupproject.models.Students;
 import com.revature.groupproject.services.CoursesServices;
+import com.revature.groupproject.services.Student_CourseServices;
 import com.revature.groupproject.services.StudentsServices;
 
 import java.util.List;
@@ -27,10 +29,10 @@ public class MainMenu implements IMenu {
         {
             while (true) {
 
-                System.out.print("Welcome to the Main Menu" + students);
+                System.out.print("Welcome to the Main Menu " + students.getName());
                 Scanner scan = new Scanner(System.in);
 
-                System.out.println("[1]View All Courses");
+                System.out.println("\n[1]View All Courses");
                 System.out.println("[2] Register for Course");
                 System.out.println("[x] Sign out.");
 
@@ -41,7 +43,7 @@ public class MainMenu implements IMenu {
                         viewCourses();
                         break;
                     case "2":
-                        new RegisterMenu(new CoursesServices(new CoursesDAO())).start();
+                        new RegisterMenu(new CoursesServices(new CoursesDAO()), students, new Student_CourseServices(new Student_CourseDAO())).start();
                         break;
                     case "x":
                         break exit;
